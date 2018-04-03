@@ -21,5 +21,5 @@ for I in 0 to N-1 generate
 		(B=>B(I), A=>A(I), S=>S(I), Cin=>C(I), Cout=>C(I+1));
 	end generate;
 C(0)<=Cin;
-Cout<=C(4);
+Cout<=C(N);
 end architecture; 
