@@ -5,8 +5,8 @@ use ieee.numeric_std.all;
 
 entity FFA is 
 	generic (N : natural := 8; -- FW input width
-		 P : integer := 3; -- Truncatenated signal width
-		 period  : time := 1000 ns); 
+		 P : integer := 3); -- Truncatenated signal width
+		 --period  : time := 1000 ns); 
 	port (FW : in std_logic_vector (N-1 downto 0);
 	      en : in std_logic;
 	      ffa : inout std_logic);
@@ -18,6 +18,7 @@ signal r : std_logic_vector (P-1 downto 0);
 signal clks : std_logic_vector (2**P downto 0);
 signal reg_out, reg_in : std_logic_vector (N-1 downto 0);
 signal m : std_logic;
+constant period : time := 1 ns * (2**P);
 
 begin
 
@@ -28,7 +29,7 @@ begin
 		wait for period/2;
 	end process;
 	S: for i in 1 to 2**P generate
-		clks(i) <= clks(i-1) after period/N;
+		clks(i) <= clks(i-1) after 1ns;
 	end generate S;
 
 
