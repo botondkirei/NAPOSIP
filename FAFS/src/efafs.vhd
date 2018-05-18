@@ -4,39 +4,46 @@ use ieee.std_logic_unsigned.all;
 use ieee.numeric_std.all;
 
 entity efafs is
-	generic ( P : natural :=256);
-	port (FW : in std_logic_vector (7 downto 0):=(others => '0');
-	      en : in std_logic;
-		clk : out std_logic);      
+	generic ( W: natural := 8; -- FW signal Width
+			N : natural :=8; -- number of phases
+			D : integer := 10); -- division factor phases
+	port (FW : in std_logic_vector (W-1 downto 0):=(others => '0');
+	      en : in std_logic; -- enable oscillation
+		efafs : out std_logic;
+		  en_led, div : out std_logic);      
 end efafs;
 
 architecture behavioral of efafs is
 
-signal c : std_logic_vector (P-1 downto 0);
-signal m : std_logic;
+signal clks : std_logic_vector (N-1 downto 0);
+signal mout : std_logic;
 signal FW_int : integer:=0;
+signal i : integer := 0;
 
 begin
-	chain: for i in 1 to P-1 generate
-		c(i) <= not c(i-1) after 1 ns;
+	chain: for i in 1 to N-1 generate
+		--clks(i) <= not clks(i-1) after 1 ns;
+		clks(i) <= clks(i-1) and en after 1 ns;
 	end generate chain;
 
-process (FW_int, en, m)
+    --clks(0) <= en nand mout after 1 ns when FW(0) = '1' else en and mout after 1 ns;
+    clks(0) <= not mout after 1 ns ;
+
+FW_int <= to_integer(unsigned(FW))-1;
+mout <= clks(FW_int);
+efafs <= mout;
+en_led <= en;
+
+process (mout)
+
 begin
-	if FW(0) = '0' then
-		c(0) <= en nand m after 1 ns;
-	else 
-		c(0) <= en and m after 1 ns;
-	end if;
+    if rising_edge(mout) then
+        if i=D then
+            i <= 0;
+        else 
+            i <= i + 1;
+        end if;
+    end if;
 end process;
-
-FW_int <= to_integer(unsigned(FW));
---m <= c(FW_int) after 1 ns;
-process (FW_int, c)
-	begin 
-		m <= c(FW_int);
-end process;
---m <= c(to_integer(FW)) after 1 ns;
-clk <= m;
-
+div <= '0' when i < D/2 else '1';
 end architecture;

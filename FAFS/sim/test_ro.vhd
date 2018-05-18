@@ -4,7 +4,7 @@ use ieee.std_logic_unsigned.all;
 use ieee.numeric_std.all;
 
 entity test_ro is 
-	generic (N : natural := 4);
+	generic (N : natural := 8);
 end entity;
 
 architecture bhv of test_ro is 
@@ -18,7 +18,7 @@ architecture bhv of test_ro is
 	signal ent : std_logic;
 
 begin
-uut : ro generic map (N => N, period => 10 ns) port map (phases => phases);
+uut : ro generic map (N => N, period => 8 ns) port map (phases => phases);
 
 ent <= '0', '1' after 300 ns;
 
