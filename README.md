@@ -21,7 +21,7 @@ out using Power and Area Aware Implementation Method, as developed in a related 
 
 For each key component in a PLL a "standalone" directory is reserved (with their own readme.md and contributing.md). 
 
-## SLM - System Lebel Models
+## SLM - System Level Models
 
 System level models of ADPLLs can be found in SLM directory. Usually this models are numerical models of PLLs, it is encoureged
 to use Octave Gnu to describe de behavoir at system level. 
