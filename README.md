@@ -12,7 +12,10 @@ high freqyuency presacller, programmable frequency dividers, FIR filters, Time-t
 Some components are better suited to be designed in a full custom IC design flow, others are better suited to be described 
 in a HDL language, synthesized and autorouted by EDA tools.
 
-This repostory hold the source code and related documentation of such components.
+This repostory hold the source code and related documentation of aformentioned components. As RTL descriptions are not suitable
+for power, delay and area estimation it is encoureged to implement the components at gate level using stucutral descriptions. 
+A gate level description is as close to a final netlist as possible and thus early power, delay and area assessment can be carried
+out using Power and Area Aware Implementation Method (as suggested in a related project [ELIB](https://github.com/botondkirei/ELib Estimation Library).
 
 ## Time-to-Digital Converter
 Time-to-Digital converters (TDC) are key components in many application: physics, electronics, tsc, just to name a few. TDCs are deployed in All Digital Phase/Frequency Locked Loops for frequency/phase measurement. This project aims to develop and describe such components in HDL
