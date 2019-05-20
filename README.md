@@ -1,5 +1,5 @@
 # NAPOSIP
-[NAPOSIP Project Site](www.naposip.utcluj.ro "NAPOSIP's Homepage")
+[NAPOSIP Project Homepage](http://naposip.utcluj.ro "NAPOSIP's Homepage")
 # Project Related Publications
 
 # Usefull Reference
