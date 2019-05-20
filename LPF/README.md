@@ -28,7 +28,6 @@ to use Octave Gnu to describe de behavoir at system level.
 
 ## DCO - Digitally controlled oscillator
 
-## LPF - Lowpass Filter (loop filter)
 
 ## TDC - Time-to-Digital converter
 
