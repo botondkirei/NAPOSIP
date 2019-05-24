@@ -1,5 +1,5 @@
 # Time-to-Digital Converter
-Time-to-Digital converters (TDC) are key components in many application: physics, electronics, tsc, just to name a few. TDCs are deployed in All Digital Phase/Frequency Locked Loops for frequency/phase measurement. This project aims to develop and describe such components in HDL
+Time-to-Digital converters (TDC) are key components in many application: physics, electronics, tsc, just to name a few. TDCs are deployed in All Digital Phase/Frequency Locked Loops for frequency/phase measurement. In this directory simulation models for Delay Line, Vernier Delay Line and Gated Ring Oscillator TDC are given. The models are described in VHDL (based on PAElib, to enable power and area estimation) and CPPSim (CPPSim has uses a GUI to develop the simulation models).
 ## TDC topologies suited for digital synthesis
 ### Delay-Line TDC
 The delay line TDC is composed of a cascade of delay components. 
@@ -10,7 +10,8 @@ https://indico.cern.ch/event/590645/contributions/2528096/attachments/1440952/22
 ## Digital Techniques to improve the performance of synthesized TDCs
 ### Calibration
 ### Redundant TDC measurement
-# Other TDC topologies suited for mixed signal implementation
+## TDC topologies based on FPGA macros
+## Other TDC topologies suited for mixed signal implementation
 ## Time amplification TDC
 # References
 [1] F. Yuan, "CMOS time-to-digital converters for mixed-mode signal processing," in The Journal of Engineering, vol. 2014, no. 4, pp. 140-154, 4 2014.
